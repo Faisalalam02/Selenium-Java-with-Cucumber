@@ -16,22 +16,30 @@ public class BaseTest {
 
     private PersonalInformation personalInfo = new PersonalInformation();
 
+    private static void setChromeDriverProperty() {
+        if (System.getProperty("os.name").contains("Windows")) {
+            System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
+        } else if (System.getProperty("os.name").contains("mac")){
+            System.setProperty("webdriver.chrome.driver", "resources/mac/chromedriver");
+        } else
+        {
+            System.setProperty("webdriver.chrome.driver", "resources/linux/chromedriver");
+        }
+    }
+
         // Launch browser
         public static void browserLaunch() {
-            System.setProperty("webdriver.chrome.driver",
-                "D://FaisalData//QATools//Selenium//drivers//chromedriver_win32//chromedriver.exe");
+            setChromeDriverProperty();
             driver = new ChromeDriver();
         }
 
         //Close browser
-        public static void browserClose()
-        {
+        public static void browserClose() {
             driver.quit();
         }
 
         //Launch application on browser
-        public void applicationLaunch()
-        {
+        public void applicationLaunch() {
             driver.get("https://beta.caspar-health.com/en/#/user/sign_in");
         }
 
