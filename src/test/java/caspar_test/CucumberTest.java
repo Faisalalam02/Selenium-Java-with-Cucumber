@@ -16,12 +16,13 @@ import org.junit.runner.RunWith;
 
 public class CucumberTest {
 
+    // Initializing browser before class start
     @BeforeClass
     public static void launchBrowser()
     {
         BaseTest.browserLaunch();
     }
-
+    // Closing browser after class
     @AfterClass
     public static void closeBrowser()
     {

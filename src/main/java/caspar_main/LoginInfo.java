@@ -6,11 +6,13 @@ import org.openqa.selenium.WebElement;
 
 public class LoginInfo {
 
+    // Storing elements path
     private By patientForm = By.xpath("//*[contains(@id, 'mat-dialog-title')]");
     private By patientId = By.xpath("//app-new-user-dialog/div[2]/div[3]/div[3]/div[2]");
     private By patientPwd = By.xpath("//app-new-user-dialog/div[2]/div[3]/div[4]/div[2]");
     private By closeBtn = By.cssSelector(".mat-button");
 
+    // All theses methods will return respective Web element
     public WebElement getPatientForm (WebDriver driver)
     {
         return driver.findElement(patientForm);

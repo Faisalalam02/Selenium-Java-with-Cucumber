@@ -8,6 +8,7 @@ import java.util.List;
 
 public class PersonalInformation {
 
+    // Storing web element path
      private By saveBtn = By.cssSelector(".divider-right");
      private By birthDay = By.xpath("//mat-select[@formcontrolname='day']");
      private By birthMonth = By.xpath("//mat-select[@formcontrolname='month']");
@@ -17,7 +18,7 @@ public class PersonalInformation {
      private By lastName = By.xpath("//input[@formcontrolname='last_name']");
      private By dropdown = By.cssSelector(".ng-trigger-transformPanel");
 
-
+    // All theses methods will return respective Web element
     public WebElement getFirstName(WebDriver driver)
     {
         return driver.findElement(firstName);

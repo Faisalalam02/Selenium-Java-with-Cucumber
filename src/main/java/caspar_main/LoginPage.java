@@ -6,11 +6,13 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage {
 
+    // Storing web elements path
     private By userName = By.name("login");
     private By password = By.name("password");
     private By loginBtn = By.cssSelector(".login");
     private By patientLogin = By.cssSelector(".tos-large");
 
+    // All theses methods will return respective Web element
     public WebElement getEmail (WebDriver driver)
     {
         return driver.findElement(userName);

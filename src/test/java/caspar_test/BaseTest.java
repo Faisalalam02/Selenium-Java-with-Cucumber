@@ -7,7 +7,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseTest {
 
@@ -16,24 +15,27 @@ public class BaseTest {
     private static String patientPwd;
 
     private PersonalInformation personalInfo = new PersonalInformation();
-    private WebDriverWait wait = new WebDriverWait(driver, 10);
 
+        // Launch browser
         public static void browserLaunch() {
             System.setProperty("webdriver.chrome.driver",
                 "D://FaisalData//QATools//Selenium//drivers//chromedriver_win32//chromedriver.exe");
             driver = new ChromeDriver();
         }
 
+        //Close browser
         public static void browserClose()
         {
             driver.quit();
         }
 
+        //Launch application on browser
         public void applicationLaunch()
         {
             driver.get("https://beta.caspar-health.com/en/#/user/sign_in");
         }
 
+        //Perform user login
         protected void userLogin (String userName, String password) {
             try {
                 LoginPage loginPage = new LoginPage();
@@ -48,6 +50,7 @@ public class BaseTest {
             }
         }
 
+        //Verify user login success or failure
         protected void loginVerification() {
             try {
                 AddPatient addPatient = new AddPatient();
@@ -61,6 +64,7 @@ public class BaseTest {
             }
         }
 
+        //Open screen for adding patient info
         protected void addPatient() {
             try {
                 AddPatient addPatient = new AddPatient();
@@ -73,6 +77,7 @@ public class BaseTest {
             }
         }
 
+        //Add patient first name
         protected void addFirstName(String firstName) {
             try {
                 personalInfo.getFirstName(driver).sendKeys(firstName);
@@ -84,6 +89,7 @@ public class BaseTest {
             }
         }
 
+        //Add patient last name
         protected void addLastName(String lastName) {
             try {
                 personalInfo.getLastName(driver).sendKeys(lastName);
@@ -95,6 +101,7 @@ public class BaseTest {
             }
         }
 
+        //Select patient birthday
         protected void selectDay(String day) {
             try{
             personalInfo.clickBirthDay(driver).click();
@@ -112,6 +119,7 @@ public class BaseTest {
             }
         }
 
+        //Select patient birth month
         protected void selectMonth(String month) {
             try{
             personalInfo.clickBirthMonth(driver).click();
@@ -128,6 +136,7 @@ public class BaseTest {
             }
             }
 
+        //Select patient birth year
         protected void selectYear(String year) {
             try {
                 personalInfo.clickBirthYear(driver).click();
@@ -144,6 +153,7 @@ public class BaseTest {
             }
         }
 
+        //Select country
         protected void selectCountry(String country) {
             try {
                 JavascriptExecutor js = ((JavascriptExecutor) driver);
@@ -163,6 +173,7 @@ public class BaseTest {
             }
         }
 
+        //Registered patient record
         protected void savePatientDetails() {
             try {
                 personalInfo.getSaveBtn(driver).click();
@@ -174,6 +185,7 @@ public class BaseTest {
             }
         }
 
+        //Verify patient registration success OR failure
         protected void patientVerification() {
             try {
                 LoginInfo loginInfo = new LoginInfo();
@@ -187,6 +199,7 @@ public class BaseTest {
             }
           }
 
+        //Capture patient login info
         protected void patientLoginInfo() {
          try{
              LoginInfo loginInfo = new LoginInfo();
@@ -201,6 +214,7 @@ public class BaseTest {
             }
     }
 
+        // Sign out from current user login session
         protected void signOut() {
             try {
                 LogOut logOut = new LogOut();
@@ -215,6 +229,7 @@ public class BaseTest {
             }
         }
 
+        // Perform login with patient credentials
         protected void patientLogin() {
             try {
                 LoginPage loginPage = new LoginPage();
@@ -229,6 +244,7 @@ public class BaseTest {
             }
         }
 
+        //Verify patient login and required T&C and medical release pag appeard or not
         protected void patientLoginVerification() {
             try {
                 LoginPage loginPage = new LoginPage();
