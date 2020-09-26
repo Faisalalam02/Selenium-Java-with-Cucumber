@@ -5,6 +5,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 
 public class MyStepdefs extends BaseTest {
 
@@ -24,7 +26,14 @@ public class MyStepdefs extends BaseTest {
     @Then("^User login successfully$")
     public void user_login_successfully() throws InterruptedException {
         Thread.sleep(2000);
-        loginVerification();
+        try {
+            loginVerification();
+        }
+        catch(NoSuchElementException e) {
+            Assert.fail("Login attempt was un-successful.");
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
 
@@ -32,7 +41,8 @@ public class MyStepdefs extends BaseTest {
     @Given("^User click on Add patient button$")
     public void user_click_on_Add_patient_button() throws InterruptedException {
         Thread.sleep(3000);
-        addPatient();
+            addPatient();
+
     }
 
     @When("^User enter first name as \"([^\"]*)\"$")

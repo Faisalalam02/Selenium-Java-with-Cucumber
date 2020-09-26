@@ -40,7 +40,7 @@ public class BaseTest {
 
         //Launch application on browser
         public void applicationLaunch() {
-            driver.get("https://beta.caspar-health.com/en/#/user/sign_in");
+            driver.get("https://app.caspar-health.com/en/#/user/sign_in");
         }
 
         //Perform user login
@@ -60,16 +60,9 @@ public class BaseTest {
 
         //Verify user login success or failure
         protected void loginVerification() {
-            try {
                 AddPatient addPatient = new AddPatient();
                 Assert.assertTrue(addPatient.getAddPatient(driver).isDisplayed());
                 System.out.println("User logged In successfully.");
-            }
-            catch (NoSuchElementException e)
-            {
-                System.out.println("Login attempt was un-successful.");
-                e.printStackTrace();
-            }
         }
 
         //Open screen for adding patient info
